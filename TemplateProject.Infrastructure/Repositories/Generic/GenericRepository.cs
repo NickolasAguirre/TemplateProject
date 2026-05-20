@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TemplateProject.Domain.Common;
+using Microsoft.EntityFrameworkCore;
+using TemplateProject.Domain.Entities.CommonEntities;
 using TemplateProject.Domain.Interfaces;
+using TemplateProject.Infrastructure.DatabaseContext;
 
 namespace TemplateProject.Infrastructure.Repositories.Generic
 {
-
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private readonly HotelDbContext _databaseContext;
+        private readonly TemplateProjectDbContext _databaseContext;
         private readonly DbSet<T> _dbSet;
 
-        public GenericRepository(HotelDbContext databaseContext)
+        public GenericRepository(TemplateProjectDbContext databaseContext)
         {
-            _hotelDbContext = hotelDbContext;
-            _dbSet = _hotelDbContext.Set<T>();
+            _databaseContext = databaseContext;
+            _dbSet = _databaseContext.Set<T>();
         }
 
         public async Task<List<T>> GetAllAsync()
@@ -90,7 +88,6 @@ namespace TemplateProject.Infrastructure.Repositories.Generic
             {
                 if (entity is AuditableEntity auditable)
                     auditable.IsActive = false;
-
             }
         }
 
@@ -145,7 +142,7 @@ namespace TemplateProject.Infrastructure.Repositories.Generic
 
         public async Task SaveChangesAsync()
         {
-            await _hotelDbContext.SaveChangesAsync();
+            await _databaseContext.SaveChangesAsync();
         }
     }
 }

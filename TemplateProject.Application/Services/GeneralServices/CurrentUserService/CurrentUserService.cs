@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TemplateProject.Application.GeneralServices.CurrentUserService
+namespace TemplateProject.Application.Services.GeneralServices.CurrentUserService
 {
     public abstract class CurrentUserService
     {

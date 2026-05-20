@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Hotel_app.API.Middleware
+namespace TemplateProject.API.Middleware
 {
     public class LoggerMiddleware(RequestDelegate next, ILogger<LoggerMiddleware> logger)
     {
@@ -46,7 +46,7 @@ namespace Hotel_app.API.Middleware
             }
 
         }
-        private void SendLogging(RequestLog requestLog, Exception exception)
+        private void SendLogging(RequestLog requestLog, Exception? exception)
         {
             var (logLevel, eventId) = GetLogLevel(requestLog.StatusCode);
             var eventIdLogger = new EventId(requestLog.StatusCode, eventId);

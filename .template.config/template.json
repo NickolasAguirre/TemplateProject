@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "",
+  "classifications": [ "Web", "API", "Clean Architecture" ],
+  "identity": "AdvancedTemplate.DotNet",
+  "name": "Advanced Template - Clean Architecture .NET",
+  "shortName": "advanced-template",
+  "tags": {
+    "language": "C#",
+    "type": "solution"
+  },
+  "sourceName": "TemplateProject",
+  "preferNameDirectory": true,
+  "symbols": {
+    "database": {
+      "type": "parameter",
+      "displayName": "Database provider",
+      "description": "Database provider to use with Entity Framework Core",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "sqlite",
+          "displayName": "SQLite",
+          "description": "SQLite (file-based, no server required)"
+        },
+        {
+          "choice": "sqlserver",
+          "displayName": "SQL Server",
+          "description": "Microsoft SQL Server"
+        },
+        {
+          "choice": "postgresql",
+          "displayName": "PostgreSQL",
+          "description": "PostgreSQL via Npgsql"
+        },
+        {
+          "choice": "mysql",
+          "displayName": "MySQL / MariaDB",
+          "description": "MySQL or MariaDB via Pomelo"
+        }
+      ],
+      "defaultValue": "sqlite"
+    },
+    "userTracking": {
+      "type": "parameter",
+      "displayName": "User tracking",
+      "description": "Include IHttpContextAccessor-based current user tracking with audit trail support",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
+    "autoDI": {
+      "type": "parameter",
+      "displayName": "Auto dependency injection",
+      "description": "Enable Scrutor-based automatic DI scanning using [Injectable] attribute with Scoped/Transient/Singleton lifetimes",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
+    "mapster": {
+      "type": "parameter",
+      "displayName": "Mapster object mapping",
+      "description": "Include Mapster for object mapping between domain entities and DTOs",
+      "datatype": "bool",
+      "defaultValue": "false"
+    }
+  },
+  "sources": [
+    {
+      "exclude": [
+        "**/bin/**",
+        "**/obj/**",
+        "**/.vs/**",
+        "**/*.user"
+      ],
+      "modifiers": [
+        {
+          "condition": "(!userTracking)",
+          "exclude": [
+            "TemplateProject.API/Infrastructure/Implement/CurrentUserImpl.cs",
+            "TemplateProject.Application/GeneralServices/CurrentUserService/CurrentUserService.cs"
+          ]
+        },
+        {
+          "condition": "(!autoDI)",
+          "exclude": [
+            "TemplateProject.Application/InjectableAttribute.cs",
+            "TemplateProject.Application/IApplicationAssemblyMarker.cs",
+            "TemplateProject.Infrastructure/IInfrastructureAssemblyMarker.cs"
+          ]
+        },
+        {
+          "condition": "(!mapster)",
+          "exclude": [
+            "TemplateProject.Application/Mapping/MapsterConfig.cs",
+            "TemplateProject.API/Mapper/MappingConfig.cs"
+          ]
+        }
+      ]
+    }
+  ]
+}

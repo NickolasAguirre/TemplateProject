@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
-using TemplateProject.Application.GeneralServices.CurrentUserService;
+using TemplateProject.Application.Services.GeneralServices.CurrentUserService;
 
 namespace TemplateProject.API.CurrentUserImpl
 {
