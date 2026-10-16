@@ -1,7 +1,7 @@
 <Solution>
-  <Project Path="TemplateProject.API/TemplateProject.API.csproj" />
   <Project Path="TemplateProject.Application/TemplateProject.Application.csproj" />
   <Project Path="TemplateProject.Common/TemplateProject.Common.csproj" />
   <Project Path="TemplateProject.Domain/TemplateProject.Domain.csproj" />
   <Project Path="TemplateProject.Infrastructure/TemplateProject.Infrastructure.csproj" />
+  <Project Path="TemplateProject/TemplateProject.csproj" />
 </Solution>

@@ -28,8 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TemplateProject.Application\TemplateProject.Application.csproj" />
-    <ProjectReference Include="..\TemplateProject.Domain\TemplateProject.Domain.csproj" />
+	  <ProjectReference Include="..\TemplateProject.API\TemplateProject.API.csproj" />
+	  <ProjectReference Include="..\TemplateProject.Application\TemplateProject.Application.csproj" />
+      <ProjectReference Include="..\TemplateProject.Domain\TemplateProject.Domain.csproj" />
   </ItemGroup>
 
 </Project>
